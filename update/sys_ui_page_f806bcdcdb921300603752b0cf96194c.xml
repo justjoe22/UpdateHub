@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function showSection(sys_id) {
+	//Show the section
+	$(sys_id).toggle();
+	
+}
+
+function completeSection(sys_id) {
+	
+	var check = confirm("Are you sure you want to Complete this task?");
+	
+	if(check){
+		
+		//Show the section
+		$(sys_id).toggle();
+		
+		var gr = new GlideRecord("x_82093_update_hub_update_order");
+		gr.addQuery("sys_id", sys_id);
+		gr.query();
+		if(gr.next()){
+			gr.state='complete';
+			gr.update();
+		}
+		
+		reloadWindow(window);
+	}
+}
+
+function skipSection(sys_id) {
+	
+	var check = prompt("Are you sure you want to SKIP this task? Please add a reason:");
+	
+	if(check){
+		
+		//Show the section
+		$(sys_id).toggle();
+		
+		var ga = new GlideAjax('skipPromotion');
+		ga.addParam('sysparm_name', 'skip_task');
+		ga.addParam('sysparm_sys_id', sys_id);
+		ga.addParam('sysparm_comment', check);
+		ga.getXML(afterAdd);
+		
+	}
+}
+
+function afterAdd(response) {
+	var promo = response.responseXML.documentElement.getAttribute("answer");
+	
+	reloadWindow(window);
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_82093_update_hub_Update Hub Implementation Page.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+<style>
+	.btn {
+	  background: #278efc;
+	  background-image: -webkit-linear-gradient(top, #278efc, #2980b9);
+	  background-image: -moz-linear-gradient(top, #278efc, #2980b9);
+	  background-image: -ms-linear-gradient(top, #278efc, #2980b9);
+	  background-image: -o-linear-gradient(top, #278efc, #2980b9);
+	  background-image: linear-gradient(to bottom, #278efc, #2980b9);
+	  -webkit-border-radius: 15;
+	  -moz-border-radius: 15;
+	  border-radius: 15px;
+	  text-shadow: 1px 1px 3px #666666;
+	  color: #ffffff;
+	  padding: 10px 20px 10px 20px;
+	  text-decoration: none;
+	}
+
+	.btn:hover {
+	  background: #1870ce;
+	  background-image: -webkit-linear-gradient(top, #1870ce, #3498db);
+	  background-image: -moz-linear-gradient(top, #1870ce, #3498db);
+	  background-image: -ms-linear-gradient(top, #1870ce, #3498db);
+	  background-image: -o-linear-gradient(top, #1870ce, #3498db);
+	  background-image: linear-gradient(to bottom, #1870ce, #3498db);
+	  text-decoration: none;
+	}
+</style>
+<j2:set var="jvar_page" value="$[sysparm_page]"/>
+	
+<g:evaluate var="jvar_gr" object="true">
+   var gr = new GlideRecord("x_82093_update_hub_update_order");
+   gr.orderBy("order");
+   gr.addQuery("promotion_number", RP.getParameterValue('sysparm_page'));
+   gr.query();
+   gr;
+</g:evaluate>
+
+<div style="margin-left: 40px;">
+	<j:while test="${gr.next()}">
+	  <br />		
+	  <button id="btn-${gr.sys_id}" class="btn" onclick="showSection('${gr.sys_id}')"><h1><j:if test="${gr.state=='skip'}"><font color="#ff0000">&#9747; </font> </j:if><j:if test="${gr.state=='complete'}"><font color="#7FFF00">&#10004;</font> </j:if>${gr.order} - ${gr.short_description}</h1></button>		
+	  <br />
+	  <j:if test="${gr.state=='toDo'}">		
+		<section id="${gr.sys_id}" style="display:none;">
+			<j:if test="${gr.type=='update'}">
+				<iframe src="/sys_remote_update_set.do?sys_id=${gr.update_set}" width="90%" height="800px"></iframe>
+			</j:if>
+			<j:if test="${gr.type!='update'}">
+				${gr.description}
+				<br />
+				<a id="header_attachment_list_label" href="#" class="attachment" click-on-enter="true" onclick="javascript:saveAttachment('x_82093_update_hub_update_order', '${gr.sys_id}');; return false;">View Attachments</a>				
+			</j:if>
+			<br />
+			<button class="btn" onclick="completeSection('${gr.sys_id}')">Complete</button>&#160;&#160; 
+			<button class="btn" onclick="skipSection('${gr.sys_id}')">Skip</button>
+		</section>		
+	  </j:if>
+	</j:while>
+	
+</div>
+	
+</j:jelly>]]></html>
+        <name>Update Hub Implementation Page</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-21 17:21:49</sys_created_on>
+        <sys_id>f806bcdcdb921300603752b0cf96194c</sys_id>
+        <sys_mod_count>130</sys_mod_count>
+        <sys_name>Update Hub Implementation Page</sys_name>
+        <sys_package display_value="Update Hub" source="x_82093_update_hub">d2285553dbc21300603752b0cf96190f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Update Hub">d2285553dbc21300603752b0cf96190f</sys_scope>
+        <sys_update_name>sys_ui_page_f806bcdcdb921300603752b0cf96194c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-30 18:25:04</sys_updated_on>
+    </sys_ui_page>
+</record_update>

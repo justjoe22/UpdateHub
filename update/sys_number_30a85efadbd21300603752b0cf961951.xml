@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_number">
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_82093_update_hub_update_order">x_82093_update_hub_update_order</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>UPD</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-29 18:56:26</sys_created_on>
+        <sys_id>30a85efadbd21300603752b0cf961951</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UPD</sys_name>
+        <sys_package display_value="Update Hub" source="x_82093_update_hub">d2285553dbc21300603752b0cf96190f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Update Hub">d2285553dbc21300603752b0cf96190f</sys_scope>
+        <sys_update_name>sys_number_30a85efadbd21300603752b0cf961951</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-29 18:56:26</sys_updated_on>
+    </sys_number>
+</record_update>

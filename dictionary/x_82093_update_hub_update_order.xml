@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Update Order" max_length="40" name="x_82093_update_hub_update_order" type="collection">
+        <element label="Description" max_length="4000" name="description" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element default="javascript:gs.getUserID();" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="Opened For" max_length="32" name="opened_for" read_only="true" reference="sys_user" type="reference" use_dynamic_default="true"/>
+        <element default="100" label="Order" max_length="40" name="order" type="integer"/>
+        <element label="Promotion Number" mandatory="true" max_length="32" name="promotion_number" reference="x_82093_update_hub_promotion_schedule" type="reference"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#9;&#13;&#10;&#9;if(current.type=='update'){&#13;&#10;&#9;&#9;return current.update_set.getDisplayValue();&#13;&#10;&#9;}&#13;&#10;&#9;else {&#13;&#10;&#9;&#9;return current.short_description;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;})(current);" display="true" label="Short Description" max_length="250" name="short_description" type="string"/>
+        <element choice="3" default="toDo" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element label="To Do" sequence="100" value="toDo"/>
+                <element label="Complete" sequence="200" value="complete"/>
+                <element label="Skip" sequence="300" value="skip"/>
+            </choice>
+        </element>
+        <element choice="3" default="update" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element label="Update Set" sequence="100" value="update"/>
+                <element label="Data Import" sequence="200" value="data"/>
+                <element label="Credential Deployment" sequence="300" value="credential"/>
+                <element label="MID Server Setup" sequence="400" value="midserver"/>
+            </choice>
+        </element>
+        <element label="Update Set" max_length="32" name="update_set" reference="sys_remote_update_set" reference_qual="update_sourceSAMEASupdate_source^stateINloading,loaded,previewed,in_hierarchy,previewed_in_hierarchy,previewing^EQ" reference_qual_condition="update_sourceSAMEASupdate_source^stateINloading,loaded,previewed,in_hierarchy,previewed_in_hierarchy,previewing^EQ" type="reference"/>
+        <index name="index">
+            <element name="promotion_number"/>
+        </index>
+        <index name="index2">
+            <element name="opened_for"/>
+        </index>
+        <index name="index3">
+            <element name="update_set"/>
+        </index>
+    </element>
+</database>
