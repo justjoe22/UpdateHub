@@ -6,7 +6,7 @@
             <element>type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Update Set</label>
+            <label>ServiceNow Update Set</label>
             <language>en</language>
             <name>x_82093_update_hub_update_order</name>
             <sequence>100</sequence>
@@ -15,9 +15,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>a2e33b81db921300603752b0cf961940</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-24 15:06:10</sys_updated_on>
+            <sys_updated_on>2018-06-01 14:40:32</sys_updated_on>
             <value>update</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -76,6 +76,25 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-05-24 15:09:53</sys_updated_on>
             <value>midserver</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Code Implementation</label>
+            <language>en</language>
+            <name>x_82093_update_hub_update_order</name>
+            <sequence>500</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-06-01 14:41:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1bbaf0b3db121300603752b0cf9619d9</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-06-01 14:41:13</sys_updated_on>
+            <value>code</value>
         </sys_choice>
         <sys_choice_set action="INSERT_OR_UPDATE">
             <element>type</element>
