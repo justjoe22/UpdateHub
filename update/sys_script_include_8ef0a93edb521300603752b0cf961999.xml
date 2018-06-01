@@ -22,6 +22,7 @@ skipPromotion.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 			var developmentTask = new GlideRecord('change_task');
 			developmentTask.initialize();
 			developmentTask.short_description = gr.promotion_number.getDisplayValue() + ' Skipped Step: ' + gr.order + ' - ' + gr.short_description;
+			developmentTask.cmdb_ci=gr.promotion_number.related_change.cmdb_ci;
 			developmentTask.description = comment;
 			developmentTask.change_task_type = 'review';
 			developmentTask.assigned_to = gr.opened_for;
@@ -39,13 +40,13 @@ skipPromotion.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-05-29 14:56:03</sys_created_on>
         <sys_id>8ef0a93edb521300603752b0cf961999</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>skipPromotion</sys_name>
         <sys_package display_value="Update Hub" source="x_82093_update_hub">d2285553dbc21300603752b0cf96190f</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Update Hub">d2285553dbc21300603752b0cf96190f</sys_scope>
         <sys_update_name>sys_script_include_8ef0a93edb521300603752b0cf961999</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-29 17:47:40</sys_updated_on>
+        <sys_updated_on>2018-06-01 18:06:34</sys_updated_on>
     </sys_script_include>
 </record_update>
