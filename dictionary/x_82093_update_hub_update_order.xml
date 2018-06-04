@@ -21,6 +21,7 @@
                 <element label="Credential Deployment" sequence="300" value="credential"/>
                 <element label="MID Server Setup" sequence="400" value="midserver"/>
                 <element label="Code Implementation" sequence="500" value="code"/>
+                <element label="Other" sequence="600" value="other"/>
             </choice>
         </element>
         <element label="Update Set" max_length="32" name="update_set" reference="sys_remote_update_set" reference_qual="update_sourceSAMEASupdate_source^stateINloading,loaded,previewed,in_hierarchy,previewed_in_hierarchy,previewing^EQ" reference_qual_condition="update_sourceSAMEASupdate_source^stateINloading,loaded,previewed,in_hierarchy,previewed_in_hierarchy,previewing^EQ" type="reference"/>
